@@ -24,8 +24,8 @@ pipeline{
         }
           
 
-        }
-	}
+        
+	
 
 	// Stage3 : Deploy
         stage ('Deploy'){
