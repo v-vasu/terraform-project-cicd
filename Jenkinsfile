@@ -8,6 +8,7 @@ environment{
        ArtifactId = readMavenPom().getArtifactId()
        Version = readMavenPom().getVersion()
        Name = readMavenPom().getName()
+       GroupId = readMavenPom().getGroupId()
        }
     stages {
         // Specify various stage with in stages
@@ -37,7 +38,7 @@ environment{
                     steps {
                         echo "Artifact ID is '${ArtifactId}'"
                         echo "Version is '${Version}'"
-                        echo "GroupID is '{}'"
+                        echo "GroupID is '${GroupId}'"
                         echo "Name is '${Name}'"
                         }
                 }
