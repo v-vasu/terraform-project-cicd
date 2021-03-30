@@ -61,25 +61,22 @@ pipeline{
                 }
 	    // Stage5 : Deploying
 	    stage ('Deploy') {
-	      steps { 
-	      echo 'Deploying......'
-        sshPublisher(publishers: 
-        [sshPublisherDesc(configName: 'ansiblecontroller', 
-        transfers: [sshTransfer(cleanRemote: false, 
-        excludes: '', 
-        execCommand: 'ansible-playbook /opt/playbooks/downloadanddeploywarfile.yml -i /opt/playbooks/hosts', 
-        execTimeout: 120000, 
-        flatten: false, 
-        makeEmptyDirs: false, 
-        noDefaultExcludes: false, 
-        patternSeparator: '[, ]+', 
-        remoteDirectory: '', 
-        remoteDirectorySDF: false, 
-        removePrefix: '', 
-        sourceFiles: '')], 
-        usePromotionTimestamp: false, 
-        useWorkspaceInPromotion: false, 
-        verbose: false)])
+	        steps { 
+	            echo 'Deploying......'
+                sshPublisher(publishers: 
+                [sshPublisherDesc(
+                    configName: 'ansiblecontroller', 
+                    transfers: 
+                        [sshTransfer(
+                                cleanRemote: false, 
+                                execCommand: 'ansible-playbook /opt/playbooks/downloadanddeploywarfile.yml -i /opt/playbooks/hosts', 
+                                execTimeout: 120000
+                   ) 
+            ],
+            usePromotionTimestamp: false, 
+            useWorkspaceInPromotion: false, 
+            verbose: false)
+            ])
 
         }
 	    }
